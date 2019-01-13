@@ -1,0 +1,42 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-faded  bg-dark">
+    
+    <div class="navbar-nav">
+       <a class="nav-item nav-link"  routerLink="/">Home</a>
+       
+        
+    </div>
+    <div class="navbar-nav ml-auto order-0">
+            <h5 class="nav-link"> {{demoConfigHolder.usecaseName}}</h5>
+    </div>
+    <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link"   routerLink="/config">Config</a>
+            <a class="nav-item nav-link" routerLink="/docs">Info</a>
+            <a class="nav-item nav-link"  *ngIf="currentUser" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+            <alert></alert>
+            <router-outlet></router-outlet>
+       <!--  <div class="row">
+            <div class="col-sm-6 offset-sm-4">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="http://docs.apigee.com" target="_top">Apigee Demo App</a>
+    </p>
+    <p>
+        <a href="http://apigee.com" target="_top">apigee.com</a>
+    </p>
+</div>

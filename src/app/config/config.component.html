@@ -1,0 +1,120 @@
+﻿
+
+<h4>Selected Pattern:   <button mat-button routerLink="/docs/{{selectedDemoConfig.usecaseId}}" color="primary"> {{selectedDemoConfig.usecaseId}}</button>  </h4>
+<div  align="end">
+    
+        <button mat-button  (click)="toggleShowMore()" color="primary">{{toggleShowMoreCaption}}</button>
+    <button mat-button  (click)="cloneConfig()" color="warn">Clone Usecase</button>
+    <button mat-button  (click)="clearConfig()" color="warn">Clear Config Data</button>
+    
+    <button mat-button  (click)="initImportConfig()" color="warn">Import</button>
+    <button mat-button  (click)="exportConfig()" color="warn">Export</button>
+    
+    <input id="fileInput" hidden type="file" (change)="onFileSelected($event.target.files)"  accept="application/JSON" />
+
+</div>
+
+<mat-form-field class="config-form-field-width">
+    <mat-select placeholder="Select the Demo Usecase" (selectionChange)="onDemoConfigSelected()" [(value)]="selectedDemoConfigId">
+      <mat-option *ngFor="let demoConfig of demoConfigs | keyvalue" [value]="demoConfig.value.usecaseName">
+        {{demoConfig.value.usecaseName}}
+      </mat-option>
+    </mat-select>
+    
+
+
+  </mat-form-field>
+
+  <br>
+
+  <!--
+<mat-form-field class="config-form-field-width">
+    <mat-select placeholder="Select the Demo Usecase" (selectionChange)="onUsecaseSelected()" [(value)]="selectedUsecase">
+      <mat-option *ngFor="let demoUsecase of demoUsecases" [value]="demoUsecase.usecaseId">
+        {{demoUsecase.usecaseName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+-->
+
+  <form [formGroup]="configForm" (ngSubmit)="onConfigUpdated()">
+
+        
+
+        <div *ngFor="let configItem of selectedDemoConfig.configItems">
+
+        <mat-form-field  *ngIf="(configItem.advanced  && showMore) || (!configItem.advanced) "  class="config-form-field-width" appearance="outline">
+                <input matInput [placeholder]="configItem.caption" [formControlName]="configItem.key">
+                <mat-hint color="prmary">{{configItem.info}}</mat-hint>
+                <mat-error>Field {{configItem.key}} is <strong>required</strong></mat-error>
+        </mat-form-field>
+    </div>
+        <mat-form-field class="config-form-field-width"  appearance="outline">
+                <input matInput placeholder="Usecase Name" formControlName="usecaseName">
+                <!--<mat-hint color="prmary">Apigee Usecase Name!</mat-hint>-->
+                <mat-error>Apigee Usecase Name is <strong>required</strong></mat-error>
+        </mat-form-field>
+
+            
+    <div class="form-group">
+        <button mat-stroked-button  color="primary"  [disabled]="loading">Update</button>
+
+        <a mat-stroked-button  routerLink="/home">   Cancel</a>
+        
+    </div>
+  </form>
+  <!--
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+ 
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Apigee Hostname" formControlName="hostName">
+        <mat-hint color="prmary">This hostname corresponds to the Virtual Host linked to Demo APIs on Apigee!</mat-hint>
+        <mat-error>Apigee Hostname is <strong>required</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Client Identifier" formControlName="clientId">
+        <mat-hint>This client ID corresponds to the App linked to Demo APIs on Apigee!</mat-hint>
+        <mat-error>Client ID is <strong>required</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Token Endpoint URI" formControlName="tokenURI">
+        <mat-error>Token URI is <strong>required</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="Get Token Caption" formControlName="tokenInfoCaption">
+    </mat-form-field>
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Token Info Endpoint URI" formControlName="tokenInfoURI">
+        <mat-error>Token Info URI is <strong>required</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="IdP Logout Endpoint" formControlName="idpLogoutEndpoint">
+    </mat-form-field>
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Protected API Endpoint URI" formControlName="protectedApiURI">
+        <mat-error>Protected API URI is <strong>required</strong></mat-error>
+    </mat-form-field>
+    <mat-form-field  *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="Protected API Caption" formControlName="protectedApiCaption">
+    </mat-form-field>
+    <mat-form-field  *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="No Access API Endpoint URI" formControlName="noAccessApiURI">
+    </mat-form-field>
+    <mat-form-field  *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="Protected API Caption" formControlName="noAccessApiCaption">
+    </mat-form-field>
+    <mat-form-field  *ngIf="showMore" class="config-form-field-width">
+            <input matInput placeholder="IdP Logout Caption" formControlName="idpLogoutCaption">
+    </mat-form-field>
+
+    <div class="form-group">
+        <button mat-stroked-button  color="primary"  [disabled]="loading">Update</button>
+
+        <a mat-stroked-button  routerLink="/home">   Cancel</a>
+        
+    </div>
+    
+</form>
+-->
+
+

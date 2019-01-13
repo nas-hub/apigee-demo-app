@@ -1,0 +1,67 @@
+{
+  "type": "array",
+  "items": { "$ref": "#/definitions/DemoConfigItem" },
+  "definitions": {
+    "DemoConfigHolder":{
+      "type": "object",
+      "required": [ "id", "usercaseId","usecaseName","usecaseCaption","configItems"],
+      "properties": {
+         "id": {
+          "type": "string",
+          "description": ""
+        },
+        "usercaseId": {
+          "type": "string",
+          "description": ""
+        },
+        "usecaseName": {
+          "type": "string",
+          "description": ""
+        },
+        "usecaseCaption": {
+          "type": "string",
+          "description": ""
+        },
+        "configItems":{
+          "type":"array",
+          "items": { "$ref": "#/definitions/DemoConfigItem" }
+        }
+      }
+      
+    },
+    "DemoConfigItem": {
+      "type": "object",
+      "required": [ "key", "value","required","type","advanced","info","caption" ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        },
+        "required": {
+          "type": "string",
+          "description": ""
+        },
+        "type": {
+          "type": "string",
+          "description": ""
+        },
+        "advanced": {
+          "type": "string",
+          "description": ""
+        },
+        "info": {
+          "type": "string",
+          "description": ""
+        },
+        "caption": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    }
+  }
+}
