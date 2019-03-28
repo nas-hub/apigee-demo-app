@@ -13,6 +13,7 @@ import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
+import { ApigeeLoginComponent } from './apigeeLogin';
 import { RegisterComponent } from './register';
 import { DocsComponent } from './docs';
 import { ConfigComponent } from './config';
@@ -41,6 +42,7 @@ import { CMComponent } from './cloudMigration';
         HomeComponent,
         DocsComponent,
         LoginComponent,
+        ApigeeLoginComponent,
         ConfigComponent,
         CMComponent,
         RegisterComponent

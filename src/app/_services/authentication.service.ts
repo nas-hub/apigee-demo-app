@@ -70,6 +70,12 @@ export class AuthenticationService {
         return this.http.get<any>('https://'+Lookup.byId("hostName", config)+Lookup.byId("tokenInfoURI", config)+'?access_token='+this.currentUserSubject.value.token);
     }
 
+    getOIDCInfo(){ 
+        let config:DemoConfigHolder = this.configService.getCurrentSelectedDemoConfig();               
+        return this.http.get<any>(Lookup.byId("wellknownConfigEndpoint", config));
+    }
+
+
     login() {
         let config:DemoConfigHolder = this.configService.getCurrentSelectedDemoConfig(); 
        return  this.http.get<any>('https://'+Lookup.byId("hostName", config)+Lookup.byId("tokenURI", config)+'?client_id='+Lookup.byId("clientId", config))
@@ -77,6 +83,9 @@ export class AuthenticationService {
                 console.log("Completed Token Call");
             }));
     }
+
+    
+    
 
     logout() {
         // remove user from local storage to log user out

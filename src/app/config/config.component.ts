@@ -34,9 +34,7 @@ export class ConfigComponent implements OnInit {
     ) { 
         this.demoUsecases = configService.getDemoUsecases();
         configService.currentDemoConfigHoldersSubject.subscribe(_demoConfigs =>{
-                
                 this.demoConfigs = _demoConfigs;
-                
         });
     }
 

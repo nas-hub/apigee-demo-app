@@ -7,10 +7,12 @@ import { DocsComponent } from './docs';
 import { CMComponent } from './cloudMigration';
 import { ConfigComponent } from './config';
 import { AuthGuard } from './_guards';
+import { ApigeeLoginComponent } from './apigeeLogin';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
+    { path: 'cicpLogin', component: ApigeeLoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'config', component: ConfigComponent },
     { path: 'docs', component: DocsComponent },

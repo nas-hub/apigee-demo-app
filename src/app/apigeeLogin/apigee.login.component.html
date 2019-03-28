@@ -1,0 +1,34 @@
+ <mat-card>
+ <mat-card-content>
+<form [formGroup]="loginForm" (ngSubmit)="apigeeLogin()">
+    <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>CICP Login Page</mat-card-title>
+                <mat-card-subtitle>OpenId Connect Initiated login.</mat-card-subtitle>
+    </mat-card-header>
+
+
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="User Id" formControlName="userId">
+        <mat-hint color="prmary">Enter CICP UserId!</mat-hint>
+        <mat-error>UserId is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="config-form-field-width">
+        <input matInput placeholder="Password" type="password" formControlName="password">
+        <mat-hint>Users Password</mat-hint>
+        <mat-error>Password is <strong>required</strong></mat-error>
+    </mat-form-field>
+</form>
+</mat-card-content>
+<mat-card-actions class="apigee-login-button-row">
+        <button mat-stroked-button  color="primary"  (click)="apigeeLogin()" [disabled]="loading">Login</button>
+
+        <a mat-stroked-button  href="https://cloud.google.com/identity-cp/">   Forgot UserId/Password</a>
+        
+
+</mat-card-actions> 
+
+
+</mat-card>

@@ -1,3 +1,28 @@
-﻿<div class="text-center">
-<button mat-raised-button color="accent" (click)="performLoginUsecaseOne()">Login</button>
+﻿<div class="text-center login-button-row">
+
+<button mat-raised-button color="accent" (click)="performLogin()">Login</button>
+
+<button  *ngIf="wellknownConfigEndpointConfigItemPresent"  mat-raised-button color="primary" (click)="getOIDInfo()">OIDC Info</button>
 </div>
+
+
+
+
+<div *ngIf="!loading"><br><pre class="text-left">{{response | json}}</pre></div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+

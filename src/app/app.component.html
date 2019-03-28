@@ -1,23 +1,29 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-faded  bg-dark">
+<nav *ngIf="apigeeSite" class="navbar navbar-expand navbar-dark bg-faded  bg-dark">
     
+
     <div class="navbar-nav">
-       <a class="nav-item nav-link"  routerLink="/">Home</a>
+            <a class="navbar-brand" href="#">
+              <img width="50" height="50" [src]="logoImage" alt="logo">
+            </a>
+            <a class="nav-item nav-link"  routerLink="/">Home</a>
        
-        
     </div>
+
     <div class="navbar-nav ml-auto order-0">
             <h5 class="nav-link"> {{demoConfigHolder.usecaseName}}</h5>
     </div>
+
     <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link"   routerLink="/config">Config</a>
             <a class="nav-item nav-link" routerLink="/docs">Info</a>
             <a class="nav-item nav-link"  *ngIf="currentUser" (click)="logout()">Logout</a>
     </div>
+
 </nav>
 
 <!-- main app container -->
-<div class="jumbotron">
+<div class="jumbotron" [ngStyle]="{'display':'block', 'width':'100%', 'height':'100%', 'background': 'url('+bgImage+') no-repeat center center fixed'}">
     <div class="container">
             <alert></alert>
             <router-outlet></router-outlet>
@@ -32,7 +38,7 @@
 
 
 <!-- credits -->
-<div class="text-center">
+<div  *ngIf="apigeeSite"  class="text-center">
     <p>
         <a href="http://docs.apigee.com" target="_top">Apigee Demo App</a>
     </p>

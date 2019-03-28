@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { User,DemoUsecase, DemoConfigHolder,Lookup } from '@app/_models';
 import { UserService,ConfigService, AuthenticationService , AlertService} from '@app/_services';
 

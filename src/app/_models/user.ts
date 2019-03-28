@@ -92,8 +92,8 @@ export class DemoUsecaseFactory{
 
 static usecases ={Pattern_1A_OIDC:
         {
-                  id:"Pattern_1A_OIDC",
-                  usecaseId:"Pattern_1A_OIDC",
+                  id:"IdP_Pattern_1A_OIDC",
+                  usecaseId:"IdP_Pattern_1A_OIDC",
                   usecaseName:"IdP based End-User Authentication : OIDC",
                   usecaseCaption:"IdP based End-User Authentication : OIDC",
                   configItems:[
@@ -157,8 +157,8 @@ static usecases ={Pattern_1A_OIDC:
       },
       Pattern_1A_SAML:
       {
-                  id:"Pattern_1A_SAML",
-                  usecaseId:"Pattern_1A_SAML",
+                  id:"IdP_Pattern_1A_SAML",
+                  usecaseId:"IdP_Pattern_1A_SAML",
                   usecaseName:"IdP based End-User Authentication : SAML",
                   usecaseCaption:"IdP based End-User Authentication : SAML",
                   configItems:[
@@ -229,8 +229,8 @@ static usecases ={Pattern_1A_OIDC:
       },
       Pattern_3A_OIDC:
       {
-                  id:"Pattern_3A_OIDC",
-                  usecaseId:"Pattern_3A_OIDC",
+                  id:"IdP_Pattern_3A_OIDC",
+                  usecaseId:"IdP_Pattern_3A_OIDC",
                   usecaseName:"Multi IdP based End-User Authentication : Any",
                   usecaseCaption:"Multi IdP based End-User Authentication : Any",
                   configItems:[
@@ -276,17 +276,18 @@ static usecases ={Pattern_1A_OIDC:
     };
 
 
-    static pattern_1A_OIDC:string ="Pattern_1A_OIDC";
-    static pattern_1B_OIDC:string ="Pattern_1B_OIDC";
-    static pattern_3A_OIDC:string ="Pattern_3A_OIDC";
-    static pattern_1A_SAML:string ="Pattern_1A_SAML";
-    static pattern_1A_3LEG:string ="Pattern_1A_3LEG";
-    static pattern_1A_OIDC_Name:string ="Pattern_1A_OIDC";
-    static pattern_1B_OIDC_NAME:string ="Pattern_1B_OIDC";
-    static pattern_3A_OIDC_NAME:string ="Pattern_3A_OIDC";
-    static pattern_1A_SAML_NAME:string ="Pattern_1A_SAML";
-    static pattern_1A_3LEG_NAME:string ="Pattern_1A_3LEG";
-    static pattern_4A_CC:string ="Pattern_4A_CC";
+    static pattern_1A_OIDC:string ="IdP_Pattern_1A_OIDC";
+    static pattern_1B_OIDC:string ="IdP_Pattern_1B_OIDC";
+    static pattern_3A_OIDC:string ="IdP_Pattern_3A_OIDC";
+    static pattern_1A_SAML:string ="IdP_Pattern_1A_SAML";
+    static pattern_1A_3LEG:string ="IdP_Pattern_1A_3LEG";
+    static pattern_1A_OIDC_Name:string ="IdP_Pattern_1A_OIDC";
+    static pattern_1B_OIDC_NAME:string ="IdP_Pattern_1B_OIDC";
+    static pattern_3A_OIDC_NAME:string ="IdP_Pattern_3A_OIDC";
+    static pattern_1A_SAML_NAME:string ="IdP_Pattern_1A_SAML";
+    static pattern_1A_3LEG_NAME:string ="IdP_Pattern_1A_3LEG";
+    static pattern_4A_CC:string ="IdP_Pattern_4A_CC";
+    static pattern_6A_APIGEE_HOSTED_OIDC:string ="IdP_Pattern_6A_APIGEE_HOSTED_OIDC";
 
     static usecaseIds = [DemoUsecaseFactory.pattern_1A_OIDC,DemoUsecaseFactory.pattern_1B_OIDC,DemoUsecaseFactory.pattern_3A_OIDC,DemoUsecaseFactory.pattern_1A_SAML,DemoUsecaseFactory.pattern_1A_3LEG];
 
@@ -309,7 +310,7 @@ static usecases ={Pattern_1A_OIDC:
 
 
 
-            case "Pattern_1A_OIDC":{
+            case "IdP_Pattern_1A_OIDC":{
                 let oidcDemoUsecase:DemoUsecase = new DemoUsecase(usecaseId,"IdP based End-User Authentication : OIDC");
                 oidcDemoUsecase.baseConfig.protectedApiURI ="/v1/1a/oidc/idp/service1";
                 oidcDemoUsecase.baseConfig.noAccessApiURI ="/v1/1a/oidc/idp/service2";
@@ -317,7 +318,7 @@ static usecases ={Pattern_1A_OIDC:
                 oidcDemoUsecase.baseConfig.tokenURI ="/v1/1a/oidc/idp/authorize";
                 return oidcDemoUsecase;
             }
-            case "Pattern_1B_OIDC":{
+            case "IdP_Pattern_1B_OIDC":{
                 let oidcDemoUsecase:DemoUsecase = new DemoUsecase(usecaseId,"IdP based End-User Authentication : OIDC with IdP Access Token");
                 oidcDemoUsecase.baseConfig.protectedApiURI ="/v1/1b/oidc/idp/service1";
                 oidcDemoUsecase.baseConfig.noAccessApiURI ="/v1/1b/oidc/idp/service2";
@@ -326,7 +327,7 @@ static usecases ={Pattern_1A_OIDC:
                 return oidcDemoUsecase;
             }
 
-            case "Pattern_1A_SAML":{
+            case "IdP_Pattern_1A_SAML":{
                 let oidcDemoUsecase:DemoUsecase = new DemoUsecase(usecaseId,"IdP based End-User Authentication : SAML");
                 oidcDemoUsecase.baseConfig.protectedApiURI ="/v1/1a/saml/idp/service1";
                 oidcDemoUsecase.baseConfig.noAccessApiURI ="/v1/1a/saml/idp/service2";
@@ -335,7 +336,7 @@ static usecases ={Pattern_1A_OIDC:
                 return oidcDemoUsecase;
             }
 
-            case "Pattern_1A_3LEG":{
+            case "IdP_Pattern_1A_3LEG":{
                 let oidcDemoUsecase:DemoUsecase = new DemoUsecase(usecaseId,"IdP based End-User Authentication : 3 Legged OAuth");
                 oidcDemoUsecase.baseConfig.protectedApiURI ="/v1/1a/3loauth/idp/service1";
                 oidcDemoUsecase.baseConfig.noAccessApiURI ="/v1/1a/3loauth/idp/service2";
@@ -344,7 +345,7 @@ static usecases ={Pattern_1A_OIDC:
                 return oidcDemoUsecase;
             }
 
-            case "Pattern_3A_OIDC":{
+            case "IdP_Pattern_3A_OIDC":{
                 let oidcDemoUsecase:DemoUsecase = new DemoUsecase(usecaseId,"Multi IdP based End-User Authentication : Any");
                 oidcDemoUsecase.baseConfig.protectedApiURI ="/v1/3a/oidc/idp/service1";
                 oidcDemoUsecase.baseConfig.noAccessApiURI ="/v1/3a/oidc/idp/service2";

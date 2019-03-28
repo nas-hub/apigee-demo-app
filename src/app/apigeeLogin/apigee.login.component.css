@@ -1,0 +1,20 @@
+.config-form-field-width {
+    width: 480px;
+}
+.example-header-image {
+    background-image: url('https://banner2.kisspng.com/20180514/hcw/kisspng-lightspeed-point-of-sale-e-commerce-retail-invento-5af92a43025166.9399308415262787230095.jpg');
+    background-size: cover;
+}
+mat-card{
+    width: 500px;
+    height: 400px;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;  
+    glyph-orientation-horizontal:middle;
+}
+
+.apigee-login-button-row button,
+.apigee-login-button-row a {
+  margin-right: 8px;
+}
