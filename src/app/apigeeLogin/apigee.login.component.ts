@@ -56,7 +56,7 @@ export class ApigeeLoginComponent implements OnInit {
         
         let formData = 'state='+this.state+'&userId='+this.userId+'&password='+this.password;
         
-        window.open('https://amer-demo14-test.apigee.net/v1/oidc/cicp/login?'+formData, '_self');  
+        window.open('https://amer-poc14-test.apigee.net/v1/gcip/auth/login?'+formData, '_self');  
         //TODO Fix the redirect issue; change GET to POST
        /*return this.http.post('https://amer-demo14-test.apigee.net/v1/oidc/cicp/login',loginData,httpOptions).subscribe(response =>{
            console.log(response);
