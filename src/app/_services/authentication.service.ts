@@ -59,6 +59,26 @@ export class AuthenticationService {
         return this.http.get<any>('https://'+Lookup.byId("hostName", config)+Lookup.byId("protectedApiURI", config)+'?access_token='+this.currentUserSubject.value.token);
     }
 
+    invokeIstioAPIDirect(){    
+        let config:DemoConfigHolder = this.configService.getCurrentSelectedDemoConfig();
+        let headers = new HttpHeaders();
+        headers = headers.append("Authorization", "Bearer " + this.currentUserSubject.value.token);
+        let httpOptions = {
+            headers:headers
+        }           
+        return this.http.get<any>(Lookup.byId("istioAPIDirectURL",config),httpOptions);
+    }
+
+    invokeIstioViaEdge(){    
+        let config:DemoConfigHolder = this.configService.getCurrentSelectedDemoConfig();
+        let headers = new HttpHeaders();
+        headers = headers.append("Authorization", "Bearer " + this.currentUserSubject.value.token);
+        let httpOptions = {
+            headers:headers
+        }           
+        return this.http.get<any>(Lookup.byId("istioAPIViaEdgeURL",config),httpOptions);
+    }
+
     noAccessAPI(){
         let config:DemoConfigHolder = this.configService.getCurrentSelectedDemoConfig();         
         return this.http.get<any>('https://'+Lookup.byId("hostName", config)+Lookup.byId("noAccessApiURI", config)+'?access_token='+this.currentUserSubject.value.token);

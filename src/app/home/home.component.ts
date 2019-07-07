@@ -20,14 +20,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     hasInvokeProtectedApi:boolean;
     invokeProtectedApiNoAccess:string;
     hasInvokeProtectedApiNoAccess:boolean;
+    hasInvokeIstioAPIDirect:boolean;
+    invokeIstioAPIDirect:string;
+    hasInvokeIstioViaEdge:boolean;
+    invokeIstioViaEdge:string;
     welcomeMessage:string;
+
     resetActions(){
         this.introspectToken ="Introspect Token";
         this.hasIntrospectToken = false;
         this.hasInvokeProtectedApi = false;
         this.hasInvokeProtectedApiNoAccess = false;
+        this.hasInvokeIstioAPIDirect = false;
+        this.hasInvokeIstioViaEdge = false;
         this.invokeProtectedApi ="Invoke Protected API";
         this.invokeProtectedApiNoAccess ="Invoke No Access API";
+        this.invokeIstioAPIDirect = "Invoke Istio Service Direct";
+        this.invokeIstioViaEdge = "Invoke Istio Service Via Edge";
     }
 
     constructor(
@@ -56,6 +65,11 @@ export class HomeComponent implements OnInit, OnDestroy {
             let protectedApiCaptionConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "protectedApiCaption");
             let noAccessApiCaptionConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "noAccessApiCaption");
 
+            let istioAPIDirectURIConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "istioAPIDirectURL");
+            let istioAPIDirectCaptionConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "istioAPIDirectCaption");
+            let istioAPIViaEdgeURIConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "istioAPIViaEdgeURL");
+            let istioAPIViaEdgeCaptionConfigItem = this.selectedDemoUsecase.configItems.find(configItem => configItem.key == "istioAPIViaEdgeCaption");
+
             if(tokenInfoURIConfigItem && tokenInfoURIConfigItem.value && tokenInfoURIConfigItem.value.length>2){
                 this.hasIntrospectToken = true;
                 if(tokenInfoCaptionConfigItem && tokenInfoCaptionConfigItem.value && tokenInfoCaptionConfigItem.value.length>1){
@@ -76,7 +90,20 @@ export class HomeComponent implements OnInit, OnDestroy {
                 } 
             }
 
-            
+            if(istioAPIDirectURIConfigItem && istioAPIDirectURIConfigItem.value && istioAPIDirectURIConfigItem.value.length>1){
+                this.hasInvokeIstioAPIDirect = true;
+                if(istioAPIDirectCaptionConfigItem && istioAPIDirectCaptionConfigItem.value && istioAPIDirectCaptionConfigItem.value.length>1){
+                    this.invokeIstioAPIDirect = istioAPIDirectCaptionConfigItem.value;
+                } 
+            }
+
+            if(istioAPIViaEdgeURIConfigItem && istioAPIViaEdgeURIConfigItem.value && istioAPIViaEdgeURIConfigItem.value.length>1){
+                this.hasInvokeIstioViaEdge = true;
+                if(istioAPIViaEdgeCaptionConfigItem && istioAPIViaEdgeCaptionConfigItem.value && istioAPIViaEdgeCaptionConfigItem.value.length>1){
+                    this.invokeIstioViaEdge = istioAPIViaEdgeCaptionConfigItem.value;
+                } 
+            }
+
         });
     }
 
@@ -114,6 +141,36 @@ export class HomeComponent implements OnInit, OnDestroy {
             });
     }
     
+
+    _invokeIstioAPIDirect(){
+        console.log("Invoking Protected API");
+        this.loading = true;
+            this.authenticationService.invokeIstioAPIDirect().subscribe(data=>{
+                console.log(data);
+                this.response =  data;
+                this.loading = false;
+            },err => {
+                this.handleError(err);
+                this.response = err;
+                this.alertService.error("Failed to invoke API: "+err.statusText);
+                this.loading = false;
+            });
+    }
+    
+    _invokeIstioViaEdge(){
+        console.log("Invoking Protected API");
+        this.loading = true;
+            this.authenticationService.invokeIstioViaEdge().subscribe(data=>{
+                console.log(data);
+                this.response =  data;
+                this.loading = false;
+            },err => {
+                this.handleError(err);
+                this.response = err;
+                this.alertService.error("Failed to invoke API: "+err.statusText);
+                this.loading = false;
+            });
+    }
     tokenInfo(){
             console.log("Invoking Token Info API");
             this.loading = true;

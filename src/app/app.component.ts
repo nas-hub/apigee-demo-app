@@ -30,7 +30,7 @@ export class AppComponent {
             }
             
         });
-        if((window.location.origin.indexOf("apigee") == -1) && (window.location.origin.indexOf("localhost") == -1)){
+        if(window.location.origin.indexOf("cloudidentitydemo.com") != -1){
             this.apigeeSite = false;
         }
     }

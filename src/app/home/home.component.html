@@ -6,6 +6,9 @@
 <button mat-button *ngIf="hasIntrospectToken" (click)="tokenInfo()" color="primary">{{introspectToken}}</button>
 <button mat-button *ngIf="hasInvokeProtectedApi" (click)="protectedAPI()" color="primary">{{invokeProtectedApi}}</button>
 <button mat-button *ngIf="hasInvokeProtectedApiNoAccess" (click)="noAccessAPI()" color="warn">{{invokeProtectedApiNoAccess}}</button>
+<button mat-button *ngIf="hasInvokeIstioAPIDirect" (click)="_invokeIstioAPIDirect()" color="primary">{{invokeIstioAPIDirect}}</button>
+<button mat-button *ngIf="hasInvokeIstioViaEdge" (click)="_invokeIstioViaEdge()" color="primary">{{invokeIstioViaEdge}}</button>
+
 
 
 <!--<button mat-button *ngIf="selectedDemoUsecase.baseConfig.idpLogoutEndpoint.length>2" (click)="idpLogout()" color="primary">{{selectedDemoUsecase.baseConfig.idpLogoutCaption}}</button>
